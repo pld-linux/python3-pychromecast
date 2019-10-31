@@ -22,6 +22,7 @@ BuildRequires:	python3-setuptools
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with tests}
+BuildRequires:	python3-casttube
 BuildRequires:	python3-zeroconf
 %endif
 Requires:	python3-modules
