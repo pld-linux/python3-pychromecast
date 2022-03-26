@@ -11,7 +11,7 @@
 Summary:	Library for Python 3 to communicate with the Google Chromecast
 Name:		python3-%{pypi_name}
 Version:	4.1.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries/Python
 Source0:	https://github.com/balloob/pychromecast/archive/%{version}.tar.gz
