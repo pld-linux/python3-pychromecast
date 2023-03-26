@@ -1,14 +1,12 @@
+#
 # Conditional build:
-%bcond_without	tests	# do not perform "make test"
+%bcond_without	tests	# unit tests
 
-# NOTES:
-# - 'module' should match the Python import path (first component?)
-# - 'egg_name' should equal to Python egg name
-# - 'pypi_name' must match the Python Package Index name
 %define		module		pychromecast
 %define		egg_name	PyChromecast
 %define		pypi_name	pychromecast
 Summary:	Library for Python 3 to communicate with the Google Chromecast
+Summary(pl.UTF-8):	Biblioteka Pythona 3 do komunikacji z Google Chromecast
 Name:		python3-%{pypi_name}
 Version:	4.1.0
 Release:	4
@@ -17,27 +15,39 @@ Group:		Libraries/Python
 Source0:	https://github.com/balloob/pychromecast/archive/%{version}.tar.gz
 # Source0-md5:	6f172ab76d8e7adcbbcf9a125b554cd2
 URL:		https://github.com/balloob/pychromecast
-BuildRequires:	python3-modules
+BuildRequires:	python3-modules >= 1:3.4
 BuildRequires:	python3-setuptools
-BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with tests}
 BuildRequires:	python3-casttube
 BuildRequires:	python3-zeroconf
 %endif
-Requires:	python3-modules
+BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.714
+Requires:	python3-modules >= 1:3.4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Library for Python 3.4+ to communicate with the Google Chromecast. It
 currently supports:
+- Auto discovering connected Chromecasts on the network
+- Start the default media receiver and play any online media
+- Control playback of current playing media
+- Implement Google Chromecast API v2
+- Communicate with apps via channels
+- Easily extendable to add support for unsupported namespaces
+- Multi-room setups with Audio cast devices
 
-Auto discovering connected Chromecasts on the network Start the
-default media receiver and play any online media Control playback of
-current playing media Implement Google Chromecast api v2 Communicate
-with apps via channels Easily extendable to add support for
-unsupported namespaces Multi-room setups with Audio cast devices
+%description -l pl.UTF-8
+Biblioteka Pythona 3.4+ do komunikacji z Google Chromecast. Obecne
+możliwości:
+- automatyczne wykrywanie podłączonych Chromecastów w sieci
+- uruchamianie domyślnego odbiornika i odtwarzanie treści online
+- sterowanie odtwarzaniem aktualnej treści
+- implementacja Google Chromecast API v2
+- komunikacja z aplikacjami poprzez kanały
+- łatwe rozszerzanie dodawania obsługi nowych przestrzeni nazw
+- konfiguracje wielopokojowe z urządzeniami Audio cast
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
