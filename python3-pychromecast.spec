@@ -8,7 +8,7 @@ Summary(pl.UTF-8):	Biblioteka Pythona 3 do komunikacji z Google Chromecast
 Name:		python3-%{module}
 # 10.3+ require protobuf >= 3.19.1
 Version:	10.2.3
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://github.com/balloob/pychromecast/releases
